@@ -1,0 +1,37 @@
+% This package defines commands and a template for homeworks in 
+% Computer Science Theory (CSCI 338 at Montana State University)
+
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{theory}[2020/01/13 Custom HW Template Package]
+
+\RequirePackage{amssymb,amsmath}
+\RequirePackage{times,psfrag,epsf,epsfig,graphics,graphicx}
+\RequirePackage{algorithm}
+\RequirePackage{algorithmic}
+
+% Options would go in this spot
+%\DeclareOption...
+
+%\ProcessOptions
+
+\newcommand{\coverpage}[1] {
+	\title{CSCI 338: Assignment~#1}
+	\author{Nathan Stouffer}
+	\maketitle
+	\newpage
+}
+
+\newcommand{\problem}[1] { 
+	\newpage
+	\section*{Problem #1} 
+}
+
+\newcommand{\task}[1] {
+	\textit{Task. } #1 \\
+}
+
+\newcommand{\solution}[1]{
+	\noindent \textit{Solution. } #1 \\
+}
+
+\endinput
