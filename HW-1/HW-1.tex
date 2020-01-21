@@ -6,6 +6,111 @@
 
 \coverpage{1}
 
-stuff
+\section*{Problem 1}
+
+Prove that $1^2+3^2+5^2+\cdots+(2n-1)^2=\frac{1}{3}n(4n^2-1)$.
+\newline
+
+\noindent
+{\bf Proof: }
+We begin by defining the property 
+$P(n) = 1^2 + 3^2 + 5^2 + \cdots + (2n-1)^2 $ 
+for any 
+$n \in \mathbb{Z}^+$.
+Our task is to show that $P(n) = \frac{1}{3}n(4n^2-1)$ for all $n \in \zpos$. We proceed by induction. \parspace
+We first must prove $P(n) = \frac{1}{3}n(4n^2-1)$ for the base case of $n = 1$. 
+Take the LHS: $P(n) = 1^2 = 1$. 
+And now the RHS: 
+$ \frac{1}{3}n(4n^2-1) = \frac{1}{3}(1)(4(1)^2-1) = 
+\frac{1}{3}(4-1) = \frac{1}{3}(3) = 1$.
+Now both the LHS and RHS are 1, and $1 = 1$. Since the LHS is equal to the RHS for $n = 1$, our base case is proved. \parspace
+We now state the inductive hypothesis. That is, for some $k \in \zpos$, we assume
+$P(k) = \frac{1}{3}k(4k^2-1)$
+to be true. \parspace
+To complete our proof, we must now show that 
+$P(k+1) = \frac{1}{3}(k+1)(4(k+1)^2-1)$
+holds. First note that 
+$$P(k+1) = 1^2 + 3^2 + 5^2 + \cdots + (2k-1)^2 + (2(k+1)-1)^2 = P(k) + (2(k+1)-1)^2$$
+We now proceed as follows:
+\begin{align*}
+	P(k+1) &= P(k) + (2(k+1)-1)^2 \\
+	&= \frac{1}{3}k(4k^2-1) + (2(k+1)-1)^2 &\text{by our inductive hypothesis} \\
+	&= \dfrac{1}{3} [k(4k^2 - 1)+ 3(2k+1)^2 ] \\
+	&= \dfrac{1}{3} [4k^3 - k + 3(4k^2 + 4k +1)] \\
+	&= \dfrac{1}{3} [4k^3 + 12k^2 + 11k +3] \\
+	&= \dfrac{1}{3} (k+1)[4k^2 + 8k + 3] \\
+	&= \dfrac{1}{3} (k+1)[4(k^2+2k)+3] \\
+	&= \dfrac{1}{3} (k+1)[4(k+1)^2 +3-4] &\text{by completing the square} \\
+	P(k+1)&= \dfrac{1}{3} (k+1)(4(k+1)^2 -1) 
+\end{align*}
+So we have now shown that $P(k+1) = \dfrac{1}{3} (k+1)(4(k+1)^2 -1)$ holds. This completes our proof by induction. So it must be true that $1^2+3^2+5^2+\cdots+(2n-1)^2=\frac{1}{3}n(4n^2-1)$ for all $n \in \zpos$.
+
+$\hfill \Box$
+\newline
+
+\section*{Problem 2}
+
+Given a planar graph $P=(V,E)$, we have Euler's formula:
+$|V|+|F|-|E|=2$, where $F$ is the set of faces of $P$ and $E$ is the
+set of edges of $P$.
+Let $|V|=n$, where $V$ is the set of vertices of $P$.
+Prove that $|F|$ is at most $2n$.
+\newline
+
+%\noindent
+%{\bf Proof:} ....
+%....
+%$\hfill \Box$
+%\newline
+
+\section*{Problem 3}
+
+Prove that in any simple graph there is a path from any vertex of odd degree
+to some other vertex of odd degree.
+\newline
+
+%\noindent
+%{\bf Proof:} ....
+%....
+%$\hfill \Box$
+%\newline
+
+\section*{Problem 4}
+
+A fully binary tree $T$ is a tree such that all internal nodes have
+two children. Prove that a fully binary tree with $n$ internal nodes
+in total has $2n+1$ nodes.
+\newline
+
+%\noindent
+%{\bf Proof:} ....
+%....
+%draw/include a figure if necessary.
+%$\hfill \Box$
+%\newline
+
+\section*{Problem 5}
+
+Given an undirected graph $G=(V,E)$, the breadth-first-search starting at $v\in V$
+($bfs(v)$ for short) is to generate a shortest path tree starting at vertex
+$v\in V$. The diameter of $G$ is the longest of all shortest paths $\delta(u,v), u,v\in V$.
+\newline
+
+When $G$ is a tree, the following algorithm is proposed to compute the
+diameter of $G$.
+\newline
+
+1. Run $bfs(w), w\in V$, and compute the vertex $x\in V$ furthest from $w$.
+
+2. Run $bfs(x)$ and compute the vertex $y\in V$ furthest from $x$.
+
+3. Return $\delta(x,y)$ as the diameter of $G$.
+\newline
+
+Prove that this algorithm is correct; i.e., $\delta(x,y)$ is in fact the
+longest among all the shortest paths between $u,v\in V$.
+\newline
+
+%\noindent
 
 \end{document}
