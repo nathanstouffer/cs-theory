@@ -6,47 +6,45 @@
 
 \coverpage{1}
 
+\newpage
 \section*{Problem 1}
-
 Prove that $1^2+3^2+5^2+\cdots+(2n-1)^2=\frac{1}{3}n(4n^2-1)$.
 \newline
 
 \noindent
 {\bf Proof: }
-We begin by defining the property 
-$P(n) = 1^2 + 3^2 + 5^2 + \cdots + (2n-1)^2 $ 
-for any 
-$n \in \mathbb{Z}^+$.
-Our task is to show that $P(n) = \frac{1}{3}n(4n^2-1)$ for all $n \in \zpos$. We proceed by induction. \parspace
-We first must prove $P(n) = \frac{1}{3}n(4n^2-1)$ for the base case of $n = 1$. 
-Take the LHS: $P(n) = 1^2 = 1$. 
-And now the RHS: 
-$ \frac{1}{3}n(4n^2-1) = \frac{1}{3}(1)(4(1)^2-1) = 
-\frac{1}{3}(4-1) = \frac{1}{3}(3) = 1$.
-Now both the LHS and RHS are 1, and $1 = 1$. Since the LHS is equal to the RHS for $n = 1$, our base case is proved. \parspace
-We now state the inductive hypothesis. That is, for some $k \in \zpos$, we assume
-$P(k) = \frac{1}{3}k(4k^2-1)$
-to be true. \parspace
-To complete our proof, we must now show that 
-$P(k+1) = \frac{1}{3}(k+1)(4(k+1)^2-1)$
-holds. First note that 
-$$P(k+1) = 1^2 + 3^2 + 5^2 + \cdots + (2k-1)^2 + (2(k+1)-1)^2 = P(k) + (2(k+1)-1)^2$$
-We now proceed as follows:
-\begin{align*}
-	P(k+1) &= P(k) + (2(k+1)-1)^2 \\
-	&= \frac{1}{3}k(4k^2-1) + (2(k+1)-1)^2 &\text{by our inductive hypothesis} \\
-	&= \dfrac{1}{3} [k(4k^2 - 1)+ 3(2k+1)^2 ] \\
-	&= \dfrac{1}{3} [4k^3 - k + 3(4k^2 + 4k +1)] \\
-	&= \dfrac{1}{3} [4k^3 + 12k^2 + 11k +3] \\
-	&= \dfrac{1}{3} (k+1)[4k^2 + 8k + 3] \\
-	&= \dfrac{1}{3} (k+1)[4(k^2+2k)+3] \\
-	&= \dfrac{1}{3} (k+1)[4(k+1)^2 +3-4] &\text{by completing the square} \\
-	P(k+1)&= \dfrac{1}{3} (k+1)(4(k+1)^2 -1) 
-\end{align*}
-So we have now shown that $P(k+1) = \dfrac{1}{3} (k+1)(4(k+1)^2 -1)$ holds. This completes our proof by induction. So it must be true that $1^2+3^2+5^2+\cdots+(2n-1)^2=\frac{1}{3}n(4n^2-1)$ for all $n \in \zpos$.
-
+	We begin by defining the property 
+	$P(n) := 1^2 + 3^2 + 5^2 + \cdots + (2n-1)^2 $ 
+	for any 
+	$n \in \mathbb{Z}^+$.
+	Our task is to show that $P(n) = \frac{1}{3}n(4n^2-1)$ for all $n \in \zpos$. We proceed by induction. \parspace
+	We first must prove the base case of $n = 1$. 
+	Take the LHS: $P(n) = 1^2 = 1$. 
+	And now the RHS: 
+	$ \frac{1}{3}n(4n^2-1) = \frac{1}{3}(1)(4(1)^2-1) = 1$.
+	Since the LHS and the RHS for both 1 for $n = 1$, our base case is proved. \parspace
+	We now state the inductive hypothesis. That is, for some $k \in \zpos$, we assume
+	$P(k) = \frac{1}{3}k(4k^2-1)$
+	to be true. \parspace
+	To complete our proof, we must now show that 
+	$P(k+1) = \frac{1}{3}(k+1)(4(k+1)^2-1)$
+	holds. First note that 
+	$$P(k+1) = 1^2 + 3^2 + 5^2 + \cdots + (2k-1)^2 + (2(k+1)-1)^2 = P(k) + (2(k+1)-1)^2$$
+	We now proceed as follows:
+	\begin{align*}
+		P(k+1) &= P(k) + (2(k+1)-1)^2 \\
+		&= \frac{1}{3}k(4k^2-1) + (2(k+1)-1)^2, \text{ by our inductive hypothesis} \\
+		&= \dfrac{1}{3} [4k^3 - k + 3(4k^2 + 4k +1)] \\
+		&= \dfrac{1}{3} [4k^3 + 12k^2 + 11k +3] \\
+		&= \dfrac{1}{3} (k+1)[4k^2 + 8k + 3] \\
+		&= \dfrac{1}{3} (k+1)[4(k^2+2k)+3] \\
+		&= \dfrac{1}{3} (k+1)[4(k+1)^2 +3-4], \text{ by completing the square} \\
+		P(k+1)&= \dfrac{1}{3} (k+1)(4(k+1)^2 -1) 
+	\end{align*}
+	So we have now shown that $P(k+1) = \dfrac{1}{3} (k+1)(4(k+1)^2 -1)$ holds. This completes our proof by induction. So it must be true that $1^2+3^2+5^2+\cdots+(2n-1)^2=\frac{1}{3}n(4n^2-1)$ for all $n \in \zpos$.
+	
 $\hfill \Box$
-\newline
+\newpage
 
 \section*{Problem 2}
 
@@ -57,11 +55,24 @@ Let $|V|=n$, where $V$ is the set of vertices of $P$.
 Prove that $|F|$ is at most $2n$.
 \newline
 
-%\noindent
-%{\bf Proof:} ....
-%....
-%$\hfill \Box$
-%\newline
+\noindent
+{\bf Proof: }
+	We want to show that, for a planar graph $P$ with $n$ vertices, it must be true that $|F| \leq 2n$. \parspace
+	If $P$ is a forest or tree, then there is only one face. So $|F| = 1$ and $1 < 2n$ $\forall n \in \zpos$. So $|F| < 2n$ if $P$ is a forest or tree. \parspace
+	We now consider all other cases. If you were to count the number of edges from the perspective of each face in $P$, you would reach exactly $2|E|$. Additionally, since we require at least three edges to define a face, it must be true that $2|E| \geq 3|F|$.
+	Equivalently, $|E| \geq \dfrac{3}{2} |F|$. Recall that Euler's formula holds for all planar graphs. So we have:
+	\begin{align*}
+		|V| + |F| - |E| = 2 &\iff n + |F| - |E| = 2 \\
+		&\iff n + |F| - \dfrac{3}{2} |F| \geq 2 \\
+		&\iff -\dfrac{1}{2} |F| \geq 2 - n \\
+		&\iff |F| \leq 2n - 4 \\
+		|V| + |F| - |E| = 2 &\iff |F| \leq 2n
+	\end{align*}
+	Since Euler's formula must be true, it must also be true that $|F| \leq 2n$. \parspace
+	So, it has been shown in all cases of planar graphs with $n$ vertices that $|F| \leq 2n$
+	
+$\hfill \Box$
+\newpage
 
 \section*{Problem 3}
 
@@ -69,11 +80,17 @@ Prove that in any simple graph there is a path from any vertex of odd degree
 to some other vertex of odd degree.
 \newline
 
-%\noindent
-%{\bf Proof:} ....
-%....
-%$\hfill \Box$
-%\newline
+\noindent
+{\bf Proof: }
+	We want to show that any simple graph has the property that there is a path from any vertex of odd degree to some other vertex of odd degree. Recall that a simple graph is a graph where no pair of vertices $a,b$ has more than one edge connecting $a$ and $b$.  \parspace
+	We now take a simple graph $G=(V,E)$. There are two cases. Either $G$ is connected or not. A graph that is not connected is the union of connected graphs, so we need only prove the connected case. \parspace
+	We now take the connected case of $G$. If $degree(v)$ is even for every vertex $v \in V$, our statement is true since there are no vertices with odd degree. So we need only prove the case where there exists some $u \in V$ such that $degree(v)$ is odd. \parspace
+	We now proceed with a proof by contradiction, that is, assume there is no path $p$ connecting vertices $u$ and $w$ where $w \in V$ and $degree(w)$ is odd.
+	Recall that we are in the case where $G$ is connected. So for $p$ to not exist, it must also be true that there is no $w \in V$ such that $degree(w)$ is odd. This implies that $u$ is the only vertex in $G$ with odd degree. \parspace
+	We can now partition $V$ into two subsets: $\{u\}$ and $C=\{c \in V \mid c \neq u \}$. Note that for $c \in C$, $degree(c)$ must be even. Denote $m$ and $n$ as the sum of the degrees of the vertices in $C$ and $V$ respectively. Since $m$ is the sum of even numbers, $m$ must be even. Now we know that $degree(u)$ is odd. Since $n = degree(u) + m$, $n$ must be odd. Yet, the sum of degrees of a graph is always $2*|E|$, which is even. Since $n$ cannot be both even and odd, a contradiction is found. So it must be true that the path $p$ exists. \parspace
+	Since $p$ exists, it must be true that in any simple graph there is a path from any vertex of odd degree to some other vertex of odd degree.
+
+$\hfill \Box$
 
 \section*{Problem 4}
 
@@ -82,12 +99,22 @@ two children. Prove that a fully binary tree with $n$ internal nodes
 in total has $2n+1$ nodes.
 \newline
 
-%\noindent
-%{\bf Proof:} ....
-%....
-%draw/include a figure if necessary.
-%$\hfill \Box$
-%\newline
+\noindent
+{\bf Proof: } 
+	Our task is to show that the fully binary tree $T$ with $n$ internal nodes has a total of $2n+1$ nodes. We will define $T_n$ to be the number of nodes in such a tree. So we must show that $T_n = 2n + 1$ for arbitrary $n \in \{0\} \cup \zpos$. We will proceed by induction. \parspace
+	Consider the base case of $T_0$, that is, a tree with no internal nodes. Since there are no internal nodes, there is only a root node. So surely, $T_0 = 1$. Now, does $T_n = 2n + 1$ hold? Certainly: $2n+1 = 2*0 +1 = 1$. So the base case holds. \parspace
+	We now state the inductive hypothesis. We assume, for some $k \in \{0\} \cup \zpos$, that $T_n = 2n + 1$ holds for all $n \leq k$. \parspace
+	We now show that $T_{k+1} = 2(k+1) + 1$. Let $M$ and $N$ be trees with $T_k$ and $T_{k+1}$ internal nodes respectively. By definition of $T_n$, it must be true that $N$ contains one more internal node than $M$, we name this internal node $i$. Since $i$ must have two child nodes, it follows that
+	\begin{align*}
+		T_{k+1} &= T_k + 2 \\
+		&= (2k+1)+2 \text{, by inductive hypothesis} \\
+		&= 2k+2+1 \\
+		T_{k+1}&= 2(k+1) + 1 
+	\end{align*}
+	Since $T_{k+1} = 2(k+1) + 1$ holds, our proof by induction is complete. So, it must be true that a fully binary tree $T$ with $n$ internal nodes has a total of $2n+1$ nodes.
+
+$\hfill \Box$
+\newpage
 
 \section*{Problem 5}
 
@@ -111,6 +138,14 @@ Prove that this algorithm is correct; i.e., $\delta(x,y)$ is in fact the
 longest among all the shortest paths between $u,v\in V$.
 \newline
 
-%\noindent
+\noindent
+{\bf Proof: }
+	Take the end points of the longest shortest path to be $a$ and $b$. We know that $y$ is certainly the farthest vertex from $x$. So whether or not this algorithm is correct relies on whether $bfs(w)$ yields $x = a$. \parspace
+	We will prove this by contradiction. That is, we assume there exists some vertex $m \in V$ such that $bfs(m)$ yields a furthest vertex $n$ such that $n \neq a$. \parspace
+	Without loss of generality, take $\delta(m,a) \geq \delta(m,b)$. Since $bfs(m)$ yields $n$, it must be true that $\delta(m,n) \geq \delta(m,a)$.
+	Recall that $\delta(a,b)$ is the diameter yet we can form a longer diameter by using $n$ and $a$ as endpoints. So we have found a contradiction. This means that $bfs(w)$ must yield the end point $a$ on the longest shortest path. \parspace
+	Since an arbitrary point yields an end point of the longest shortest path, it must be the case that the above algorithm computes the diameter.
+
+$\hfill \Box$
 
 \end{document}
