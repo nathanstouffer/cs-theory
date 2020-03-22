@@ -4,15 +4,21 @@
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
 \ProvidesPackage{theory}[2020/01/13 Custom HW Template Package]
 
+\RequirePackage{titlesec}
+\RequirePackage{enumitem}
 \RequirePackage{amssymb,amsmath}
 \RequirePackage{times,psfrag,epsf,epsfig,graphics,graphicx}
 \RequirePackage{algorithm}
 \RequirePackage{algorithmic}
+\RequirePackage{tikz}
 
 % Options would go in this spot
 %\DeclareOption...
 
 %\ProcessOptions
+
+\titleformat{\subsection}[runin]
+{\normalfont\large\bfseries}{\thesubsection}{1em}{}
 
 \newcommand{\coverpage}[1] {
 	\title{CSCI 338: Assignment~#1}
@@ -41,5 +47,7 @@
 
 % symbol for the positive integers
 \newcommand{\zpos}{\mathbb{Z}^+}
+
+\newcommand{\derives}{ \overset{*}{\Longrightarrow} }
 
 \endinput

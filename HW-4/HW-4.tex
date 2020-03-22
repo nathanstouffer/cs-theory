@@ -1,0 +1,96 @@
+\documentclass[11pt]{article}
+
+\usepackage{../theory}
+
+
+\begin{document}
+\date{}
+%\date{Feb 3, 2020}
+
+\coverpage{4}
+
+\newpage
+\section*{Problem 1}
+
+Let ${\cal B}$ be the set of all infinite sequences over $\{a,b\}$. Show that
+${\cal B}$ is uncountable, using a proof by diagonalization. \\
+
+\noindent
+{\bf Proof: } We prove that ${\cal B}$ is uncountable by contradiction, that is, we assume that ${\cal B}$ is countable. Since ${\cal B}$ is countable, we know there exists a bijective map \\ 
+$f: {\cal B} \longrightarrow {\cal N}$. We now construct an element $b \in {\cal B}$ that violates the surjective property of $f$, that is, there exists no $n \in {\cal N}$ such that $f(n) = b$. \parspace
+For $i \in {\cal N}$, let $f(i) = a$. We then choose $b_i \neq a_i$ (where $*_i$ means the $i^{th}$ element of $*$). To be explicit, if $a_i = a$, then $b_i = b$. Alternatively, if $a_i = b$, then $b_i = a$. \parspace
+We have now constructed $b \in {\cal B}$ (the Codomain) such that there exists no $n \in {\cal N}$ (the Domain) where $f(n) = b$. This means that the map $f$ is no longer surjective. Thus, in assuming that ${\cal B}$ is countable, we have encountered a contradiction. So it must be the case that ${\cal B}$ is uncountable.
+
+$\hfill \Box$
+\newpage
+
+\section*{Problem 2}
+
+Let $T=\{ (i,j,k) \mid i,j,k \in {\cal N} \}$. Show that $T$ is countable. \\
+
+\noindent
+{\bf Proof: } To show that $T$ is countable, we must give a bijection $f : {\cal N} \longrightarrow T$.
+
+$\hfill \Box$
+\newpage
+
+\section*{Problem 3}
+
+Let $INFINITE_{PDA}=\{<M>|M$ is a PDA and $L(M)$ is an infinite language$\}$.
+Show that $INFINITE_{PDA}$ is decidable.
+\newline
+
+\noindent
+{\bf Proof: }
+
+$\hfill \Box$
+\newpage
+
+\section*{Problem 4}
+
+Let $\Sigma=\{a,b\}$. Define the following language {\em ODD}$_{TM}$:
+
+{\em ODD}$_{TM}=\{ <M>|M$ is a TM and $L(M)$ contains only strings of odd length $\}$.
+
+Prove that {\em ODD}$_{TM}$ is undecidable. \\
+
+\noindent
+{\bf Proof: }
+
+$\hfill \Box$
+\newpage
+
+\section*{Problem 5}
+
+Show that $EQ_{CFG}$ is undecidable.
+\newline
+
+\noindent
+{\bf Proof: }
+
+$\hfill \Box$
+\newpage
+
+\section*{Problem 6}
+
+Show that $EQ_{CFG}$ is co-Turing-recognizable.
+\newline
+
+\noindent
+{\bf Proof: }
+
+$\hfill \Box$
+\newpage
+
+\section*{Problem 7}
+
+Problem 5.3 (page 239---third edition of Sipser).
+\newline
+
+\noindent
+{\bf Proof: }
+
+$\hfill \Box$
+\newpage
+
+\end{document}
