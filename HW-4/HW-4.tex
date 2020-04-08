@@ -116,7 +116,7 @@ Prove that {\em ODD}$_{TM}$ is undecidable. \\
 $M_1 = $ ``On input x: \\
 	\indent \textbf{1. } If $|x|$ is odd, \textit{accept} \\
 	\indent \textbf{2. } If $|x|$ is even, run $M$ on $w$ and \textit{accept} if $M$ accepts $w$'' \parspace
-Then $L(M_1)$ will always contain at least all strings of odd length. However, $L(M_1)$ will only contain strings of even length if $M$ accepts $w$. That is, the membership of $M_1$ in $ODD_{TM}$ depends entirely on whether $M$ accepts $w$. We will now construct a $TM$ to decide $A_{TM}$: \parspace
+Then $L(M_1)$ will always contain at least all strings of odd length. However, $L(M_1)$ will also contain strings of even length if $M$ accepts $w$. That is, the membership of $M_1$ in $ODD_{TM}$ depends entirely on whether $M$ accepts $w$. We will now construct a $TM$ to decide $A_{TM}$: \parspace
 $S = $ ``On input $\langle M, w \rangle $: \\
 	\indent \textbf{1. } Construct $M_1$ as above \\
 	\indent \textbf{2. } Run $R$ on input $\langle M_1 \rangle $ \\
