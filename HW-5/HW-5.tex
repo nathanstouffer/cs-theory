@@ -1,0 +1,135 @@
+\documentclass[11pt]{article}
+
+\usepackage{../theory}
+
+\begin{document}
+\date{}
+\coverpage{5}
+\maketitle
+
+\newpage
+\section*{Problem 1}
+
+\noindent
+We are given 5 matrices $M_1,...,M_5$, their dimensions (i.e., rows by columns)
+are as follows: 
+$M_1$ is 15 $\times$ 20,
+$M_2$ is 20 $\times$ 30,
+$M_3$ is 30 $\times$ 10,
+$M_4$ is 10 $\times$ 50, and
+$M_5$ is 50 $\times$ 8. \newline
+
+\noindent
+(1.1) Run the dynamic programming algorithm for {\em matrix chain multiplication} that we covered in class to produce the table $m[-,-]$. \parspace
+We give the table $m[-,-]$:
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		& 1 & 2 & 3 & 4 & 5 \\
+		\hline
+		1 & 0 & 9000 & 9000 & 21000 & 13600 \\
+		\hline
+		2 & -- & 0 & 6000 & 16000 & 11200 \\
+		\hline
+		3 & -- & -- & 0 & 15000 & 6400 \\
+		\hline
+		4 & -- & -- & -- & 0 & 4000 \\
+		\hline
+		5 & -- & -- & -- & -- & 0 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\noindent
+(1.2) What is the optimal solution value? Where do you find it? \parspace
+The optimal solution value is 136000 multiplications. This value can be found in the top right corner of the table at $m[1,5]$.
+
+\newpage
+\section*{Problem 2}
+
+\noindent
+We are given a context-free grammar $G$ as follows:
+\newline
+
+$G$: $S \longrightarrow AS \mid SB$
+
+~~~~  $A \longrightarrow AD\mid DA \mid a$
+
+~~~~  $B \longrightarrow BB \mid BD \mid b$
+
+~~~~  $D \longrightarrow DD \mid d$
+
+We are also given a string $w=bdbdd$.
+\newline
+
+\noindent
+(2.1) Run the dynamic programming algorithm for $A_{CFG}$ that we covered in class to produce the table $table[-,-]$. \parspace
+We give now fill the entries of $table[-,-]$:
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		& 1 & 2 & 3 & 4 & 5 \\
+		\hline
+		1 & B & B & B & B & B \\
+		\hline
+		2 & -- & D & $\emptyset$ & $\emptyset$ & $\emptyset$ \\
+		\hline
+		3 & -- & -- & B & B & B \\
+		\hline
+		4 & -- & -- & -- & D & D \\
+		\hline
+		5 & -- & -- & -- & -- & D \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\noindent
+(2.2) How do we know whether $G$ generates $w$ from the table? \parspace
+We know whether $G$ generates $w$ by the following rule:
+$$w \in L(G) \iff S \in table[1,5]$$
+Since $S \notin table[1,5]$ we know that $G$ does not generate $w$.
+
+\newpage
+\section*{Problem 3}
+
+Show that $ALL_{DFA} \in $ P. \parspace
+We first define $ALL_{DFA} := \{ \langle D \rangle \mid D$ is a DFA and $L(D) = \Sigma ^* \}$. \parspace
+From Theorem 4.4, we know that $E_{DFA} := \{ \langle A \rangle \mid A $ is a DFA and $L(A) = \emptyset \}$ is decidable by the following Turing Machine. \parspace
+$T = $ ``On input $\langle A \rangle$ a DFA: \\
+\indent \textbf{1. } Mark the start state of $A$ \\
+\indent \textbf{2. } Repeat until no new states get marked: \\
+\indent \textbf{3. } \indent Mark any state that has a transition coming into it from any state that 
+\indent \indent \indent ~is already marked \\
+\indent \textbf{4. } If no accept state is marked, \textit{accept}; otherwise, \textit{reject}
+'' \parspace
+Additionally, we can construct the complement of a DFA by reversing accept/nonaccept states in the DFA. We now give a Turing Machine $A$ to decide $ALL_{DFA}$. \parspace
+$A = $ ``On input $\langle D \rangle$ a DFA: \\
+\indent \textbf{1. } Construct a DFA $E$ where $L(E) = \overline{L(D)}$ \\
+\indent \textbf{2. } Run TM $T$ on input $\langle E \rangle$ \\
+\indent \textbf{3. } If $T$ accepts, \textit{accept} \\
+\indent \textbf{4. } If $T$ rejects, \textit{reject}
+'' \parspace
+In words, $A$ constructs the DFA that is the complement of $D$. It then tests if the complement's language is empty. If so, the original language must be $\Sigma ^*$. \parspace
+So $A$ certainly decides $ALL_{DFA}$, but does it do so in polynomial time? Let $s$ be the number of states for the input DFA $D$, then the number of transitions in $D$ is $| \Sigma | * s$. Line 1 of $A$ runs in $O(s)$ time. Lines 3 and 4 run in $O(1)$ time. The running time of line 2 is the same as the running time of $T$. \parspace
+Lines 1 and 4 of $T$ run in $O(1)$ time while line 3 runs in $O(| \Sigma | * s)$ time (the number of edges). But $ | \Sigma | $ is a constant so $ O(| \Sigma | * s) = O(s)$. In the worst case scenario, line 2 repeats $s$ times so $T$ is a $O(1) + s * O(s) + O(1) = O(s^2)$ machine. \parspace
+This brings us back to machine $A$, which we now know to be a $ O(1) + O(s^2) + O(1) + O(1) = O(s^2)$ machine. Since $ALL_{DFA}$ has a polynomial time decider, it must be true that $ALL_{DFA} \in P$. 
+
+\newpage
+\section*{Problem 4}
+
+Show that Independent Set $\in$ NP. \parspace
+We first define the problem: \parspace 
+$ IS := \{ \langle G, k \rangle \mid G=(V,E) \text{ is a graph and } k \leq |V| \text{ where there exists an independent set }$ \\
+\indent \indent \indent \indent \indent
+$ V^\prime \subset V \text{ with } |V^\prime| \geq k \} $ \parspace
+We must also define an independent set of vertices. This is a set $V^\prime \subset V$ such that for all $u,v \in V^\prime$ it is true that $(u, v) \notin E$. \parspace 
+Note that a language $A$ is a member of NP if $A$ has a polynomial verifier. This is true if and only if $A$ is decidable by some nondeterministic Turing Machine in polynomial time. We now give a nondeterministic Turing Machine $S$ to decide $IS$. \parspace
+$S =$ ``On input $\langle G, k \rangle$ where $G = (V, E)$ a graph and $k \in \mathbb{N}$: \\
+\indent \textbf{1. } Nondeterministically select a subset of vertices $ V^\prime$ such that $| V^\prime | \geq k$ \\
+\indent \textbf{2. } For each element $(u, v) \in V' \times V'$ \\
+\indent \textbf{3. } \indent If $(u, v) \in E$, \textit{reject} \\
+\indent \textbf{4. } Test has been passed, \textit{accept}
+'' \parspace
+Certainly $S$ nondeterminstically decides $IS$, but does it run in polynomial time? Yes, in fact, it runs in $ O(n^2) $ time, where $n = | V' |$. So we have a polynomial, nondeterminstic decider for $IS$, therefore $ S \in NP$.
+
+\end{document}

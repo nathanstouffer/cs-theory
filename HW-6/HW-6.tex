@@ -1,0 +1,101 @@
+\documentclass[11pt]{article}
+
+\usepackage{../theory}
+
+\begin{document}
+\date{}
+\coverpage{6}
+\maketitle
+
+\newpage
+\section*{Problem 1}
+
+A triangle in an undirected graph is a 3-clique. Show that $TRIANGLE \in P$, where $TRIANGLE = \{ \langle G \rangle \mid G$ contains a triangle$\}$. \\
+
+\noindent
+{\bf Proof: } To show that $TRIANGLE \in P$, we must give a polynomial time Turing Machine to decide $TRIANGLE$. Consider the below TM: \\\\\
+$A = $ ``On input $\langle G \rangle$ a graph: \\
+\indent \textbf{1. } For each $(u,v,w) \in V \times V \times V$ \\
+\indent \textbf{2. } \indent Test if $(u,v) \in E$ and $(v,w) \in E$ and $(u,w) \in E$ \\
+\indent \textbf{3. } \indent If test is passed, \textit{accept} \\
+\indent \textbf{4. } No triple passed the test, \textit{reject}
+'' \parspace
+Does $A$ run in polynomial time? Lines 3 and 4 are constant. Line 2 runs in $O(|E|)$ and line 1 runs $|V|^3$ times. So $A$ is a $|V|^3 * O(|E|) = O(|V|^3 * |E|)$ machine, which is polynomial (note $|E| \leq |V|^2$). Thus $TRIANGLE \in P$.
+
+$\hfill \Box$
+\newpage
+
+\section*{Problem 2}
+
+Let $G$ represent an undirected graph. \\ Also let \\
+\indent \indent $SPATH = \{ \langle G, a, b, k \rangle \mid G $ contains a simple path of length at most $k$ \\ \indent \indent \indent \indent \indent \indent \indent \indent \indent from $a$ to $b \}$ \\
+and \\ 
+\indent \indent $LPATH = \{ \langle G, a, b, k \rangle \mid G $ contains a simple path of length at least $k$ \\ \indent \indent \indent \indent \indent \indent \indent \indent \indent from $a$ to $b \}$ \\\\
+Show that $SPATH \in P$ and that $LPATH$ is NP-complete. \\
+
+\noindent
+{\bf Proof: } We first show that $SPATH \in P$. To do so, we use a slight variation of breadth first search. Consider the following TM. \\\\
+$S = $ ``On input $\langle G, a, b, k \rangle$: \\
+\indent \textbf{1. } Mark $a$ \\
+\indent \textbf{2. } Repeat $k$ times \\
+\indent \textbf{3. } \indent Mark any node with an edge from an already marked node \\
+\indent \textbf{4. } If $b$ is marked, \textit{accept}; otherwise \textit{reject}
+'' \parspace
+Lines 1 and 4 run in constant time. Line 2 repeats $k$ times and line 3 runs in $O(|E|)$ time. So $S$ is a $k*O(|E|) = O(|E|)$ machine, and $SPATH$ must be in $P$. \parspace
+We now show that $LPATH$ is NP-complete. We must first show that $LPATH \in NP$ by giving a polynomial verifier for $LPATH$: \\\\
+$A = $ ``On input $\langle G, a, b, k, p \rangle$ where $p$ is a sequence of edges: \\
+\indent \textbf{1. } Test if all edges in $p$ are in $G$ \\
+\indent \textbf{2. } Test if $p$ begins at $a$ and terminates at $b$ \\
+\indent \textbf{3. } Test if $|p| \geq k$ \\
+\indent \textbf{4. } If all tests are passed, \textit{accept} \\
+\indent \textbf{5. } Otherwise, \textit{reject}
+'' \parspace
+Line 1 is $O(|E|)$ and the remaining lines are constant. So $A$ is a polynomial time machine and $LPATH \in NP$, but is it NP-complete? In fact it is, consider the reduction $ UHAMPATH \leq _p LPATH$ \parspace
+$R = $ `` On input $ \langle G, a, b \rangle$: \\
+\indent \textbf{1. } If $|V| = 1$, \textit{reject} \\
+\indent \textbf{2. } Match the output of $B$ (a decider for $LPATH$) on $ \langle G, a, b, |V|-1 \rangle$ '' \parspace
+The above mapping reduction takes constant time and $UHAMPATH$ is NP-complete, so $LPATH$ must also be NP-complete.
+
+$\hfill \Box$
+\newpage
+
+\section*{Problem 3}
+
+Let $DOUBLE-SAT = \{ \langle \phi \rangle \mid \phi $ has at least two satisfying assignments$\}$. Show that $DOUBLE-SAT$ is NP-complete. \\
+
+\noindent
+{\bf Proof: } We first show that $DOUBLE-SAT$ is a member of $NP$: \parspace
+$A = $ ``On input $ \langle \phi \rangle$: \\
+\indent \textbf{1. } Nondeterministically select two assignments for $\phi$ \\
+\indent \textbf{2. } If both assignments evaluate to true, \textit{accept}; otherwise \textit{reject} '' \parspace
+The above machine runs on polynomial time since selecting two assignments takes constant time and evaluating statements is polynomial. We now show $DOUBLE-SAT$ is NP-complete by reducing $SAT$. Consider the following TM:
+$ R = $ ``On input $ \langle \phi \rangle $: \\
+\indent \textbf{1. } Construct $ \alpha = \phi \land (y \lor \overline{y})$ \\
+\indent \textbf{2. } Match the output of $B$ (a decider for $DOUBLE-SAT$) on input $ \langle \alpha \rangle$'' \parspace
+This reduction takes only constant time, so it must be the case that $DOUBLE-SAT$ is a member of NP-complete.
+
+$\hfill \Box$
+
+\newpage
+\section*{Problem 4}
+
+A subset of the nodes of a graph $G$ is a dominating set if every other node of $G$ is adjacent to some node in the subset. Let
+$$ DOMINATING-SET = \{ \langle G, k \rangle \mid G \text{ has a dominating set with } k \text{ nodes} \}$$
+Show that it is NP-complete by giving a reduction from $VERTEX-COVER$. \\
+
+\noindent
+{\bf Proof: } We first show that $DOMINATING-SET \in NP$ by giving it a nondeterministic decider. \parspace
+$A = $ ``On input $ \langle G, k \rangle $: \\
+\indent \textbf{1. } Nondeterministically select a subset $V'$ with $|V'| = k$ \\
+\indent \textbf{2. } For each node $v$ in $ G \setminus V'$ \\
+\indent \textbf{3. } \indent If there is no edge $ (v, v')$ for any $v' \in V$, \textit{reject} \\
+\indent \textbf{4. } All nodes tested, \textit{accept}'' \parspace
+The above machine is $O(|E|)$, so $DOMINATING-SET \in NP$. We now show, through a reduction of $VERTEX-COVER$, that $DOMINATING-SET$ is a member of NP-complete. Consider the following description of a Turing Machine. \parspace
+For $ \langle G, k \rangle $, an input to VC, we then construct the input to DS. For each edge $(u,v) \in G$, add the node $w_{uv}$ and edges $ (u, w_{uv})$ and $(v, w_{uv})$. Then match the output of DS. \parspace
+Note that the reduction takes only polynomial time with the number of edges in $G$. As far as correctness goes, VC accepts graphs which have subsets of nodes such that each edge contains one of the nodes, while DS accepts graphs where nodes are adjacent. The above TM takes any edge and adds a node in it's place (while keeping the original graph), which would force a DS to contain the new node, and so contain the original edge. The other direction can be shown with the inverse mapping (deleting $w_{uv}$). \parspace
+So, $DOMINATING-SET$ is a member of NP and a NP-complete problem can reduce to $DOMINATING-SET$. So $DOMINATING-SET$ must be NP-complete.
+
+$\hfill \Box$
+
+\end{document}
+
